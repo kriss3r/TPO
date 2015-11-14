@@ -18,6 +18,7 @@ public class FiguraTest {
 		
 		for(Figura x:zbior){
 			System.out.println(x.toString());
+			System.out.println("TEST2"); // testujemy GITa
 		}
 		
 		
