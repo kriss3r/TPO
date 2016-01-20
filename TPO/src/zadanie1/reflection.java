@@ -1,39 +1,51 @@
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class reflection {
 
-	//publiTc getName
-	
-	
 	public void getConstructors(String ClassName){
-		
-		try {
-			System.out.println("Tu jeszcze dzia³a");
-			Class cl = Class.forName(ClassName).getSuperclass();
-			System.out.println("Tu juz nie");
+			Class temp;
+			ArrayList Constructors = new ArrayList();
+			try {
+				temp = Class.forName(ClassName);
+			System.out.println(temp.getName());
 			
-			System.out.println(cl.getName());
-			ArrayList Constructors = new ArrayList();	
-			Constructors.add(cl.getConstructors());		
+			for(Constructor<?> c:temp.getConstructors()){		
+				ArrayList param = new ArrayList();
+				param.add(0, c.getParameterTypes());
+				
+				if(c.getParameterCount()==0){
+					Class<?>[] temp2 = c.getParameterTypes();
+					for(Object c:temp2){
+						
+					}
+						
+				}
+			
+			}		
 			for(int i=0;i<Constructors.size();i++){
-				System.out.println(i+" "+Constructors.get(i));
-			}
+				System.out.println(i+" "+Constructors.get(i).toString());
+			}	
 			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		
+			
+			
+			
+			
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		this.retry();
 	}
-}	
-		
+	}		
+			
+	
 		public void doAsk(){
-			reflection ref = new reflection();
 			System.out.println("Podaj pelna nazwe dostepnej klasy, w³asnej lub bibliotecznej");
 			Scanner input = new Scanner(System.in);
 			if(input.hasNextLine()){
 				String x = input.nextLine().toString();
-				ref.getConstructors(x);
+				this.getConstructors(x);
 			}
 		}
 
@@ -45,7 +57,7 @@ public class reflection {
 				String s =input.nextLine();
 				if(s.equals("T")){
 					doAsk();
-				}else if(s.equals("N")){
+				}else {
 					System.out.println("Zakonczenie programu");
 				}
 		}
