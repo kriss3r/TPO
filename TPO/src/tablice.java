@@ -10,7 +10,7 @@ public class tablice {
 		// TODO Auto-generated method stub
 		
 		ArrayList ar = new ArrayList();
-		
+	
 		for (byte i=0;i<127;i++){
 			ar.add("wartosc i ="+i+" ");
 			System.out.println(ar.get(i).toString() + ar.size());
